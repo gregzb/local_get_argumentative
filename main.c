@@ -32,7 +32,18 @@ void free_args(char ** args) {
 
 int main(int argc, char ** argv) {
   char input_str[] = "ls -a -l";
+
+  printf("Input args: %s\n", input_str);
   char ** args = parse_args(input_str);
+
+  printf("Separated args: \n");
+  int i;
+  for (i = 0; args[i] != 0; i++) {
+    printf("%d: %s\n", i, args[i]);
+  }
+  printf("\n");
+
+  printf("Excecuting command\n");
   execvp(args[0], args);
 
   //I know this won't be executed, but whatever
